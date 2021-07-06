@@ -1,0 +1,225 @@
+# depslib dependency file v1.0
+1606347900 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\notebook.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"notebook.h"
+
+1606185501 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1606185555 c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\utn.h
+
+1606345793 c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\notebook.h
+	"LinkedList.h"
+
+1606177651 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1606178257 c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\linkedlist.h
+
+1606351449 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Linkedlist.h"
+	"controller.h"
+	"notebook.h"
+
+1606261951 c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\controller.h
+
+1606264646 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"notebook.h"
+
+1606351325 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\controlle.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"notebook.h"
+	"parser.h"
+	"controller.h"
+
+1606193986 c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\parser.h
+
+1606260826 source:c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1606260788 c:\users\martin\desktop\tp_laboratorio_1\tp4\tp4\menu.h
+
+1606399124 source:c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\controlle.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"notebook.h"
+	"parser.h"
+	"controller.h"
+
+1606399124 c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\utn.h
+
+1606399124 c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\linkedlist.h
+
+1606419256 c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\notebook.h
+	"LinkedList.h"
+
+1606399124 c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\parser.h
+
+1606399124 c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\controller.h
+
+1606399124 source:c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1606419285 source:c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\notebook.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"notebook.h"
+
+1606399124 source:c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"notebook.h"
+
+1606399124 source:c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1606419717 source:c:\users\avellaneda2\desktop\tp_laboratorio_1\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Linkedlist.h"
+	"utn.h"
+	"controller.h"
+	"notebook.h"
+
+1606504089 source:c:\users\martin\tp_laboratorio_1\tp4\tp4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1606449920 c:\users\martin\tp_laboratorio_1\tp4\tp4\linkedlist.h
+
+1606510657 source:c:\users\martin\tp_laboratorio_1\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Linkedlist.h"
+	"utn.h"
+	"controller.h"
+	"notebook.h"
+
+1606429412 c:\users\martin\tp_laboratorio_1\tp4\tp4\utn.h
+
+1606503928 c:\users\martin\tp_laboratorio_1\tp4\tp4\controller.h
+
+1606510483 c:\users\martin\tp_laboratorio_1\tp4\tp4\notebook.h
+	"LinkedList.h"
+
+1606510696 source:c:\users\martin\tp_laboratorio_1\tp4\tp4\notebook.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"notebook.h"
+	"utn.h"
+
+1606429412 source:c:\users\martin\tp_laboratorio_1\tp4\tp4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"notebook.h"
+
+1606429412 source:c:\users\martin\tp_laboratorio_1\tp4\tp4\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1606504008 source:c:\users\martin\tp_laboratorio_1\tp4\tp4\controlle.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"notebook.h"
+	"parser.h"
+	"controller.h"
+
+1606429412 c:\users\martin\tp_laboratorio_1\tp4\tp4\parser.h
+
+1606624927 source:c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\controlle.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"notebook.h"
+	"parser.h"
+	"controller.h"
+
+1606624718 c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\utn.h
+
+1606624718 c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\linkedlist.h
+
+1606624718 c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\notebook.h
+	"LinkedList.h"
+
+1606624718 c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\parser.h
+
+1606624718 c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\controller.h
+
+1606624718 source:c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1606625146 source:c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Linkedlist.h"
+	"utn.h"
+	"controller.h"
+	"notebook.h"
+
+1606625146 source:c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\notebook.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"notebook.h"
+	"utn.h"
+
+1606624718 source:c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"notebook.h"
+
+1606624718 source:c:\users\martin\tp_laboratorio_1\tp_laboratorio_1\tp4\tp4\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1625014759 source:c:\users\martin\eclipse-workspace\tp_laboratorio_1\tp2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"utn.h"
+	"ArrayEmployees.h"
+
+1625014473 c:\users\martin\eclipse-workspace\tp_laboratorio_1\tp2\utn.h
+
+1625014265 c:\users\martin\eclipse-workspace\tp_laboratorio_1\tp2\arrayemployees.h
+
+1625014869 source:c:\users\martin\eclipse-workspace\tp_laboratorio_1\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+	"utn.h"
+
+1625014416 source:c:\users\martin\eclipse-workspace\tp_laboratorio_1\tp2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
