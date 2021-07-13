@@ -19,7 +19,7 @@
 
  * \return 0 si ha salido ok. -1 si no lo logro
  */
-int utn_getNumeroInt(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
+int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
 
 /*
  * \brief solicita una cadena de caracteres.
@@ -30,24 +30,19 @@ int utn_getNumeroInt(int* pResultado, char* mensaje, char* mensajeError, int min
  * \return 0 si ha salido ok. -1 si no.
  */
 
-int utn_getCadena(char* pResultado, int len, char* mensaje, char* mensajeError, int reintentos);
+int utn_getCadena(char* mensaje, char* mensajeError, int minimo, int max, int reintentos, char* resultado);
 
 /*
  * \brief Valida que la cadena recibida sea un nombre valido
  * \param puntero con el string validado.
- * \param longitud del string.
  * \return 1 (verdadero) si solo tiene letras y espacios. 0 (falso) si no.
  */
-int esNombreValido(char* string, int len);
 
-/*
- * \brief valida que la cadena recibida es un número entero valido
- * \param puntero del string validado.
- * \param longitud del string.
- * \return 1 (verdadero) si es un número entero. 0 (falso) si no lo es.
- */
+int esNombreValido(char* cadena);
 
-int esNumericaInt(char* cadena, int len);
+
+int getString(char* mensaje, char* msgError, int minimo, int maximo, int* reintentos, char* resultado);
+
 #endif /* UTN_H_ */
 
 #endif // UTN_H_INCLUDED

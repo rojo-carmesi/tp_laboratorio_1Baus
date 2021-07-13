@@ -15,8 +15,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
     int error = -1;
     char bufferDatos[4][128];
     int cantidadElementos;
-    int bufferint;
-    int maxId = -1;
     Employee* nuevoEmpleado;
     nuevoEmpleado = NULL;
 
@@ -36,15 +34,8 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
                 {
                     if(!ll_add(pArrayListEmployee,nuevoEmpleado))
                     {
-                        employee_getId(nuevoEmpleado,&bufferint);
-
-                        if(bufferint>maxId)
-                        {
-                            maxId = bufferint;
-                        }
+                         error = 0;
                     }
-
-                    error = 0;
                 }
             }else
             {
@@ -52,8 +43,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
             }
 
         }while(!feof(pFile));
-
-        employee_setPrimerId(maxId+1);
 
         fclose(pFile);
     }

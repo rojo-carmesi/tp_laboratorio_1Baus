@@ -75,10 +75,9 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_addEmployee(LinkedList* pArrayListEmployee)
+int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
 {
     int error = -1;
-    int id;
     char nombre[20];
     int horasTrabajadas;
     int sueldo;
@@ -89,14 +88,21 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     if(pArrayListEmployee != NULL)
     {
 
-        if(utn_getCadena(nombre,51,"Ingrese el nombre del empleado\n","Error, re ingres el nombre\n",5)&&
-                utn_getNumeroInt(&horasTrabajadas,"Ingrese las horas que trabajo el empleado\n","Error, re ingrese las horas\n",0,100,4)&&
-                utn_getNumeroInt(&sueldo,"Ingrese el sueldo del empleado\n","Error, re ingrese las horas\n",1,99999,4))
+        if(!utn_getCadena("Ingrese el nombre del empleado\n","Error, nombre invalido\n",3,51,3,nombre)&&
+                !utn_getNumero(&horasTrabajadas,"Ingrese las horas que trabajo el empleado\n","Error, re ingrese las horas\n",0,100,4)&&
+                !utn_getNumero(&sueldo,"Ingrese el sueldo del empleado\n","Error, re ingrese las horas\n",1,99999,4))
         {
-            error = 0;
-            id = employee_generarId();
-            nuevoEmpleado = employee_newParametrosInt(id,nombre,horasTrabajadas,sueldo);
-            ll_add(pArrayListEmployee,nuevoEmpleado);
+
+            printf("%s  %d   %d",nombre,horasTrabajadas,sueldo);
+            nuevoEmpleado = employee_newParametrosInt(*id,nombre,horasTrabajadas,sueldo);
+            if(nuevoEmpleado != NULL)
+            {
+                if(!ll_add(pArrayListEmployee,nuevoEmpleado))
+                {
+                    *id = *id + 1;
+                    error = 0;
+                }
+            }
         }
 
     }
@@ -115,7 +121,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
     int id;
-    char nombre[NOMBRE];
+    char nombre[51];
     int horasTrabajadas;
     int sueldo;
     int opcionMenu;
@@ -127,8 +133,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     if(pArrayListEmployee != NULL)
     {
         controller_ListEmployee(pArrayListEmployee);
-        if(utn_getNumeroInt(&id,"\nIngrese la id del Empleado que desea modificar\n",
-                            "\nError, ingrese un numero valido\n",0,5000,4))
+        if(!utn_getNumero(&id,"\nIngrese la id del Empleado que desea modificar\n",
+                          "\nError, ingrese un numero valido\n",0,5000,4))
         {
             indice = employee_buscarPorId(pArrayListEmployee,id);
 
@@ -149,15 +155,14 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
                 do
                 {
-                    if(utn_getNumeroInt(&opcionMenu,
-                                        "\n*** MENU DE MODIFICACION ***\nIngrese la opcion para modificar el campo\n1 Nombre\n2 Horas Trabajadas\n3 Sueldo\n4 Salir"
-                                        ,"Error,ingrese una opcion valida",0,4,4))
+                    if(!utn_getNumero(&opcionMenu,
+                                      "\n*** MENU DE MODIFICACION ***\nIngrese la opcion para modificar el campo\n1 Nombre\n2 Horas Trabajadas\n3 Sueldo\n4 Salir"
+                                      ,"Error,ingrese una opcion valida",0,4,4))
                     {
                         switch(opcionMenu)
                         {
                         case 1:
-                            if(utn_getCadena(nombre,NOMBRE,"\nIngrese el nuevo nombre\n","Error, vuelva a ingresar el nombre\n",
-                                             4))
+                            if(!utn_getCadena("Ingrese el nombre del empleado\n","Error, nombre invalido\n",3,51,3,nombre))
                             {
                                 if(!employee_setNombre(auxiliarEmpleado,nombre))
                                 {
@@ -168,8 +173,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
                             break;
                         case 2:
-                            if(utn_getNumeroInt(&horasTrabajadas,"\nIngrese las horas trabajadas\n","Error, ingrese un numero valido\n",
-                                                0,HORAS,4))
+                            if(!utn_getNumero(&horasTrabajadas,"\nIngrese las horas trabajadas\n","Error, ingrese un numero valido\n",
+                                              0,1000,4))
                             {
                                 if(!employee_setHorasTrabajadas(auxiliarEmpleado,horasTrabajadas))
                                 {
@@ -180,8 +185,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                             }
                             break;
                         case 3:
-                            if(utn_getNumeroInt(&sueldo,"\nIngrese el nuevo sueldo\n","Error, ingrese un numero valido\n",
-                                                0,SUELDO,4))
+                            if(!utn_getNumero(&sueldo,"\nIngrese el nuevo sueldo\n","Error, ingrese un numero valido\n",
+                                              0,999999999,4))
                             {
                                 if(!employee_setSueldo(auxiliarEmpleado,sueldo))
                                 {
@@ -231,8 +236,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     {
         controller_ListEmployee(pArrayListEmployee);
 
-        if(utn_getNumeroInt(&id,"\nIngrese la id del Empleado que desea dar de baja\n",
-                            "\nError, ingrese un numero valido\n",0,5000,4))
+        if(!utn_getNumero(&id,"\nIngrese la id del Empleado que desea dar de baja\n",
+                          "\nError, ingrese un numero valido\n",0,5000,4))
         {
             indice = employee_buscarPorId(pArrayListEmployee,id);
 
@@ -252,28 +257,28 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
                 printf("-------------------------------------------------\n\n");
                 mostrarEmpleado(auxiliarEmpleado);
 
-                    if(utn_getNumeroInt(&confirmaBaja,"Confirma la baja del empleado?\n1-Si\n2-No\n","Error, opcion incorrecta\n",1,2,4))
+                if(!utn_getNumero(&confirmaBaja,"Confirma la baja del empleado?\n1-Si\n2-No\n","Error, opcion incorrecta\n",1,2,4))
+                {
+                    if(confirmaBaja == 1)
                     {
-                        if(confirmaBaja == 1)
-                        {
-                            retorno = 1;
-                            ll_remove(pArrayListEmployee,indice);
+                        retorno = 1;
+                        ll_remove(pArrayListEmployee,indice);
 
-                        }
-                        else
+                    }
+                    else
+                    {
+                        if(!confirmaBaja)
                         {
-                            if(!confirmaBaja)
-                            {
-                                retorno = 0;
-                            }
-
+                            retorno = 0;
                         }
 
                     }
-                }
 
+                }
             }
+
         }
+    }
 
     return retorno;
 }
@@ -340,59 +345,63 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
         if(tamanio > 2)
         {
-            if(utn_getNumeroInt(&opcionMenu,"Ingrese la opcion para ordenar\n\n1 Id\n2 Nombre\n3 Horas Trabajadas\n4 Sueldo\n","Error, re ingrese criterio\n",0,5,4))
+            if(!utn_getNumero(&opcionMenu,"Ingrese la opcion para ordenar\n\n1 Id\n2 Nombre\n3 Horas Trabajadas\n4 Sueldo\n","Error, re ingrese criterio\n",0,5,4))
             {
-                if(utn_getNumeroInt(&criterio,"Ingrese el criterio para ordenar\n0 Ascendente\n1 Descendente\n","Error, re ingrese criterio\n",0,1,4))
+                if(!utn_getNumero(&criterio,"Ingrese el criterio para ordenar\n0 Ascendente\n1 Descendente\n","Error, re ingrese criterio\n",0,1,4))
                 {
                     error = 0;
 
-                        switch(opcionMenu)
+                    switch(opcionMenu)
+                    {
+                    case 1:
+                        if(!criterio)
                         {
-                        case 1:
-                                if(!criterio)
-                                {
-                                    printf("\nListado ordenardo por ID ascendente\n");
-                                    ll_sort(pArrayListEmployee,employee_ordenarPorId,criterio);
-                                }else
-                                {
-                                    printf("\nListado ordenardo por ID descendente\n");
-                                    ll_sort(pArrayListEmployee,employee_ordenarPorId,criterio);
-                                }
-                            break;
-                        case 2:
-                            if(!criterio)
-                            {
-                                printf("\nListado ordenardo por nombre ascendente\n");
-                                ll_sort(pArrayListEmployee,employee_ordenarNombre,criterio);
-                            }else
-                            {
-                                printf("\nListado ordenardo por nombre descendente\n");
-                                ll_sort(pArrayListEmployee,employee_ordenarNombre,criterio);
-                            }
-                            break;
-                        case 3:
-                            if(!criterio)
-                            {
-                                printf("\nListado ordenardo por horas trabajadas ascendente\n");
-                                ll_sort(pArrayListEmployee,employee_ordenarHorasTrabajadas,criterio);
-                            }else
-                            {
-                                printf("\nListado ordenardo por horas trabajadas descendente\n");
-                                ll_sort(pArrayListEmployee,employee_ordenarHorasTrabajadas,criterio);
-                            }
-                            break;
-                        case 4:
-                            if(!criterio)
-                            {
-                                printf("\nListado ordenardo por sueldos ascendente\n");
-                                ll_sort(pArrayListEmployee,employee_ordenarPorSueldo,criterio);
-                            }else
-                            {
-                                printf("\nListado ordenardo por sueldos  descendente\n");
-                                ll_sort(pArrayListEmployee,employee_ordenarPorSueldo,criterio);
-                            }
-                            break;
+                            printf("\nListado ordenardo por ID ascendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarPorId,criterio);
                         }
+                        else
+                        {
+                            printf("\nListado ordenardo por ID descendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarPorId,criterio);
+                        }
+                        break;
+                    case 2:
+                        if(!criterio)
+                        {
+                            printf("\nListado ordenardo por nombre ascendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarNombre,criterio);
+                        }
+                        else
+                        {
+                            printf("\nListado ordenardo por nombre descendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarNombre,criterio);
+                        }
+                        break;
+                    case 3:
+                        if(!criterio)
+                        {
+                            printf("\nListado ordenardo por horas trabajadas ascendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarHorasTrabajadas,criterio);
+                        }
+                        else
+                        {
+                            printf("\nListado ordenardo por horas trabajadas descendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarHorasTrabajadas,criterio);
+                        }
+                        break;
+                    case 4:
+                        if(!criterio)
+                        {
+                            printf("\nListado ordenardo por sueldos ascendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarPorSueldo,criterio);
+                        }
+                        else
+                        {
+                            printf("\nListado ordenardo por sueldos  descendente\n");
+                            ll_sort(pArrayListEmployee,employee_ordenarPorSueldo,criterio);
+                        }
+                        break;
+                    }
                 }
             }
         }
@@ -416,7 +425,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
     int error = -1;
     int id;
-    char nombre[NOMBRE];
+    char nombre[51];
     int horasTrabajadas;
     int sueldo;
     int tamanio;

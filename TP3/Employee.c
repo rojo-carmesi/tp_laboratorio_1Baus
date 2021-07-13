@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "Employee.h"
 
-static int idEmpleado = 0;
+
 
 Employee* employee_new()
 {
@@ -44,6 +44,7 @@ Employee* employee_newParametrosInt(int id,char* nombre,int horasTrabajadas, int
 
     if(nuevoEmpleado != NULL)
     {
+        printf("%d",id);
         if(employee_setId(nuevoEmpleado,id) == 1 ||
                 employee_setNombre(nuevoEmpleado, nombre)== 1||
                 employee_setHorasTrabajadas(nuevoEmpleado,horasTrabajadas)== 1
@@ -81,6 +82,26 @@ int employee_buscarPorId(LinkedList* pArrayListaDeEmpleados, int idBuscado)
     return retorno;
 }
 
+int employee_buscarMayorId(LinkedList* pArrayListEmployee, int* id)
+{
+	int retorno = 0;
+	Employee* auxEmp = NULL;
+	int mayorId;
+	if(pArrayListEmployee!=NULL)
+	{
+		for(int i = 0; i < ll_len(pArrayListEmployee) ; i++)
+		{
+			auxEmp = (Employee*) ll_get(pArrayListEmployee,i);
+			if(i == 0 || auxEmp->id > mayorId)
+			{
+				mayorId = auxEmp->id;
+			}
+		}
+		*id = mayorId + 1;
+		retorno = 1;
+	}
+	return retorno;
+}
 
 void employee_delete(Employee* this)
 {
@@ -90,7 +111,7 @@ void employee_delete(Employee* this)
 int mostrarEmpleado(Employee* empleado)
 {
     int error = 0;
-    char nombre[NOMBRE];
+    char nombre[51];
     int id;
     int sueldo;
     int horasTrabajadas;
@@ -119,16 +140,6 @@ int employee_setId(Employee* this, int id)
         error = 0;
     }
     return error;
-}
-
-int employee_generarId()
-{
-    return idEmpleado++;
-}
-
-void employee_setPrimerId(int valorInt)
-{
-   idEmpleado = valorInt;
 }
 
 int employee_setNombre(Employee* this, char* nombre)

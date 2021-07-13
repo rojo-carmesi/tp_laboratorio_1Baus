@@ -57,3 +57,60 @@
 	<limits.h>
 	"utn.h"
 
+1626153121 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"controller.h"
+
+1626152528 c:\users\martin\desktop\tp_laboratorio_1baus\tp3\utn.h
+
+1626134415 c:\users\martin\desktop\tp_laboratorio_1baus\tp3\linkedlist.h
+
+1626151704 c:\users\martin\desktop\tp_laboratorio_1baus\tp3\employee.h
+	"LinkedList.h"
+
+1626134415 c:\users\martin\desktop\tp_laboratorio_1baus\tp3\parser.h
+
+1626150784 c:\users\martin\desktop\tp_laboratorio_1baus\tp3\controller.h
+
+1626153181 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp3\employee.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"Employee.h"
+
+1626152904 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"menu.h"
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1626134415 c:\users\martin\desktop\tp_laboratorio_1baus\tp3\menu.h
+
+1626152551 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp3\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+	"utn.h"
+
+1626151280 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1626152579 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp3\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

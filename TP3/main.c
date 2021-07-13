@@ -26,6 +26,7 @@ int main()
     int option = 0;
     int flagBinario = 1;
     int flagTexto = 1;
+    int proximoId = 1;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
 
@@ -57,6 +58,7 @@ int main()
                     {
                         flagTexto = 0;
                         printf("Empleados cargados en modo texto\n\n");
+                        employee_buscarMayorId(listaEmpleados,&proximoId);
 
                     }
                     else
@@ -88,6 +90,7 @@ int main()
                     {
                         flagBinario = 0;
                         printf("Empleados cargados en modo binario\n\n");
+                        employee_buscarMayorId(listaEmpleados,&proximoId);
 
                     }
                     else
@@ -102,7 +105,8 @@ int main()
         case 3:
             if(!flagBinario || !flagTexto)
             {
-                if(!controller_addEmployee(listaEmpleados))
+                printf("%d",proximoId);
+                if(!controller_addEmployee(listaEmpleados,&proximoId))
                 {
                     printf("Alta exitosa!\n");
                 }

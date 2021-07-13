@@ -1,8 +1,6 @@
 #ifndef employee_H_INCLUDED
 #define employee_H_INCLUDED
-#define NOMBRE 128
-#define HORAS 1000000
-#define SUELDO 5000000
+
 #include "LinkedList.h"
 typedef struct
 {
@@ -179,4 +177,6 @@ int employee_ordenarHorasTrabajadas(void*emp1,void* emp2);
  * \return 0 si lo ordeno sin problemas, 1 si no ordeno
  */
 int employee_ordenarPorSueldo(void*emp1,void* emp2);
+
+int employee_buscarMayorId(LinkedList* pArrayListEmployee, int* id);
 #endif // employee_H_INCLUDED

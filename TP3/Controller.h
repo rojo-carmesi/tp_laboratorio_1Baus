@@ -21,11 +21,12 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee);
 /** \brief Realiza el alta del empleado recibiendo un puntero a la lista
  *
  * \param  pArrayListEmployee punteroa la lista de empleado
+ *\param ID puntero a integer que autogenera el ID del empleado en tiempo de ejecucion
  * \return 0 si salio ok -1 si hubo error
  *
  */
 
-int controller_addEmployee(LinkedList* pArrayListEmployee);
+int controller_addEmployee(LinkedList* pArrayListEmployee, int* id);
 /** \brief Realiza  la modificacion de un empleado de la lista solicitando el id como referencia
  *
  * \param  pArrayListEmployee punteroa la lista de empleado

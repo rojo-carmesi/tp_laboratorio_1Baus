@@ -25,9 +25,11 @@ int menu(int*pOpcionMenu)
             printf("9 Guardar los datos de los empleados en el archivo data.bin (modo binario)\n");
             printf("10 Finalizar programa\n");
 
-            utn_getNumeroInt(&opcion,"\nIngrese la opcion deseada\n","Error, opcion invalida\n",0,10,4);
+            if(!utn_getNumero(&opcion,"\nIngrese la opcion deseada\n","Error, opcion invalida\n",0,10,4))
+            {
+                error = 0;
+            }
 
-            error = 0;
         }
         while(opcion<1 || opcion>10);
         *pOpcionMenu = opcion;
