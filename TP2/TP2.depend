@@ -26,7 +26,7 @@
 	<stdlib.h>
 	<string.h>
 
-1626149374 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp2\arrayemployees.c
+1626233111 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp2\arrayemployees.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -35,11 +35,11 @@
 	"utn.h"
 	"ArrayEmployees.h"
 
-1626147581 c:\users\martin\desktop\tp_laboratorio_1baus\tp2\utn.h
+1626233387 c:\users\martin\desktop\tp_laboratorio_1baus\tp2\utn.h
 
-1626134415 c:\users\martin\desktop\tp_laboratorio_1baus\tp2\arrayemployees.h
+1626233111 c:\users\martin\desktop\tp_laboratorio_1baus\tp2\arrayemployees.h
 
-1626148507 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp2\main.c
+1626233111 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -48,7 +48,7 @@
 	"ArrayEmployees.h"
 	"utn.h"
 
-1626149566 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp2\utn.c
+1626233111 source:c:\users\martin\desktop\tp_laboratorio_1baus\tp2\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
