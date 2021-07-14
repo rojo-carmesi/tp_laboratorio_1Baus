@@ -178,34 +178,52 @@ int utn_getNumeroFloat(float* pResultado, char* mensaje,char* mensajeError, floa
     return retorno;
 }
 
+int esNombreValido(char* cadena)
+{
+    int retorno=1;
+    if(cadena != NULL)
+    {
+
+        for(int i=0; cadena[i]!='\0'; i++)
+        {
+
+            if(cadena[i]<'A' || (cadena[i]>'Z' && cadena[i]<'a') || cadena[i]>'z')
+            {
+                retorno=0;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
 
 
 
-int getString(char* mensaje, char* mensajeError, int minimo, int max, int* reintentos, char* resultado)
+int validarCadena(char* mensaje, char* mensajeError, int minimo, int maximo, int* reintentos, char* resultado)
 {
     int retorno=-1;
-    char bufferStr[max+10];
+    char bufferStr[maximo];
 
-    if(mensaje!=NULL && mensajeError!=NULL && minimo<=max && reintentos>=0 && resultado!=NULL)
+    if(reintentos>0 && minimo<=maximo && mensaje!=NULL && mensajeError!=NULL &&  resultado!=NULL)
     {
         do
         {
             printf("%s",mensaje);
             fflush(stdin);
-
             fgets(bufferStr,sizeof(bufferStr),stdin);
-
             bufferStr[strlen(bufferStr)-1]='\0';
 
-            if(strlen(bufferStr)>=minimo && strlen(bufferStr)<max)
+            if(strlen(bufferStr)>=minimo && strlen(bufferStr)<maximo)
             {
-                strncpy(resultado,bufferStr,max);
+                strcpy(resultado,bufferStr);
                 retorno=0;
                 break;
+            }else
+            {
+                printf("%s",mensajeError);
+                (*reintentos)--;
             }
-            printf("%s",mensajeError);
 
-            (*reintentos)--;
         }
         while((*reintentos)>=0);
     }
@@ -213,20 +231,20 @@ int getString(char* mensaje, char* mensajeError, int minimo, int max, int* reint
 }
 
 
-int utn_getCadena(char* mensaje, char* mensajeError, int minimo, int max, int reintentos, char* resultado)
+int utn_getCadena(char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos, char* resultado)
 {
     int retorno=-1;
-    char bufferStr[max];
+    char bufferStr[maximo];
 
-    if(mensaje!=NULL && mensajeError!=NULL && minimo<=max && reintentos>=0 && resultado!=NULL)
+    if(mensaje!=NULL && mensajeError!=NULL && minimo<=maximo && reintentos>=0 && resultado!=NULL)
     {
         do
         {
-            if(!getString(mensaje,mensajeError,minimo,max,&reintentos,bufferStr))
+            if(!validarCadena(mensaje,mensajeError,minimo,maximo,&reintentos,bufferStr))
             {
                 if(esNombreValido(bufferStr)==1)
                 {
-                    strncpy(resultado,bufferStr,max);
+                    strncpy(resultado,bufferStr,maximo);
                     retorno=0;
                     break;
                 }
@@ -242,21 +260,6 @@ int utn_getCadena(char* mensaje, char* mensajeError, int minimo, int max, int re
     return retorno;
 }
 
-int esNombreValido(char* cadena)
-{
-    int retorno=1;
-    int i;
-    for(i=0; cadena[i]!='\0'; i++)
-    {
-
-        if(cadena[i]<'A' || (cadena[i]>'Z' && cadena[i]<'a') || cadena[i]>'z')
-        {
-            retorno=0;
-            break;
-        }
-    }
-    return retorno;
-}
 
 
 

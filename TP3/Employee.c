@@ -12,7 +12,13 @@ Employee* employee_new()
     Employee* nuevoEmpleado;
 
     nuevoEmpleado = (Employee*) malloc(sizeof(Employee));
-
+    if(nuevoEmpleado != NULL)
+    {
+        nuevoEmpleado->id = 0;
+		strcpy(nuevoEmpleado->nombre, "");
+		nuevoEmpleado->horasTrabajadas = 0;
+		nuevoEmpleado->sueldo = 0;
+    }
     return nuevoEmpleado;
 }
 
@@ -44,7 +50,7 @@ Employee* employee_newParametrosInt(int id,char* nombre,int horasTrabajadas, int
 
     if(nuevoEmpleado != NULL)
     {
-        printf("%d",id);
+
         if(employee_setId(nuevoEmpleado,id) == 1 ||
                 employee_setNombre(nuevoEmpleado, nombre)== 1||
                 employee_setHorasTrabajadas(nuevoEmpleado,horasTrabajadas)== 1
@@ -82,52 +88,9 @@ int employee_buscarPorId(LinkedList* pArrayListaDeEmpleados, int idBuscado)
     return retorno;
 }
 
-int employee_buscarMayorId(LinkedList* pArrayListEmployee, int* id)
-{
-	int retorno = 0;
-	Employee* auxEmp = NULL;
-	int mayorId;
-	if(pArrayListEmployee!=NULL)
-	{
-		for(int i = 0; i < ll_len(pArrayListEmployee) ; i++)
-		{
-			auxEmp = (Employee*) ll_get(pArrayListEmployee,i);
-			if(i == 0 || auxEmp->id > mayorId)
-			{
-				mayorId = auxEmp->id;
-			}
-		}
-		*id = mayorId + 1;
-		retorno = 1;
-	}
-	return retorno;
-}
-
 void employee_delete(Employee* this)
 {
     free(this);
-}
-
-int mostrarEmpleado(Employee* empleado)
-{
-    int error = 0;
-    char nombre[51];
-    int id;
-    int sueldo;
-    int horasTrabajadas;
-
-    if(empleado != NULL )
-    {
-        if(!employee_getHorasTrabajadas(empleado,&horasTrabajadas)&&
-                !employee_getId(empleado,&id) && !employee_getNombre(empleado,nombre) &&
-                !employee_getSueldo(empleado,&sueldo))
-        {
-            printf("%d        %10s         %4d                %5d\n",id,nombre,horasTrabajadas,sueldo);
-            error = 1;
-        }
-    }
-
-    return error;
 }
 
 int employee_setId(Employee* this, int id)
@@ -344,4 +307,26 @@ int employee_ordenarPorSueldo(void*emp1,void* emp2)
     }
 
     return retorno;
+}
+
+int mostrarEmpleado(Employee* empleado)
+{
+    int error = 0;
+    char nombre[51];
+    int id;
+    int sueldo;
+    int horasTrabajadas;
+
+    if(empleado != NULL )
+    {
+        if(!employee_getHorasTrabajadas(empleado,&horasTrabajadas)&&
+                !employee_getId(empleado,&id) && !employee_getNombre(empleado,nombre) &&
+                !employee_getSueldo(empleado,&sueldo))
+        {
+            printf("%d        %10s         %4d                %5d\n",id,nombre,horasTrabajadas,sueldo);
+            error = 1;
+        }
+    }
+
+    return error;
 }

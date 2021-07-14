@@ -36,13 +36,12 @@ int main()
         menu(&option);
 
 
-
         switch((option))
         {
         case 1:
             if(!flagBinario)
             {
-                printf("Usted esta trabajando con el archivo en binario, debe guardarlo primero!\n");
+                printf("Usted esta trabajando con el archivo en binario!\n");
 
             }
             else
@@ -53,12 +52,10 @@ int main()
                 }
                 else
                 {
-
-                    if(!controller_loadFromText("data.csv",listaEmpleados))
+                    if(!controller_loadFromText("data.csv",listaEmpleados,&proximoId))
                     {
                         flagTexto = 0;
                         printf("Empleados cargados en modo texto\n\n");
-                        employee_buscarMayorId(listaEmpleados,&proximoId);
 
                     }
                     else
@@ -67,45 +64,39 @@ int main()
                         printf("\nProblemas con la carga de los empleados\n");
                     }
                 }
-
             }
-            break;
+                break;
 
-        case 2:
-            if(!flagTexto)
-            {
-                printf("Usted esta trabajando con el archivo en texto, debe guardarlo primero!\n");
-
-            }
-            else
-            {
-                if(!flagBinario)
+            case 2:
+                if(!flagTexto)
                 {
-                    printf("Usted ya abrio el archivo en modo binario!\n");
+                    printf("Usted esta trabajando con el archivo en texto\n");
+
                 }
                 else
                 {
-
-                    if(!controller_loadFromBinary("data.bin",listaEmpleados))
+                    if(!flagBinario)
                     {
-                        flagBinario = 0;
-                        printf("Empleados cargados en modo binario\n\n");
-                        employee_buscarMayorId(listaEmpleados,&proximoId);
-
+                        printf("Usted ya abrio el archivo en modo binario!\n");
                     }
                     else
                     {
 
-                        printf("\nProblemas con la carga de los empleados\n");
-                    }
-                }
+                        if(!controller_loadFromBinary("data.bin",listaEmpleados,&proximoId))
+                        {
+                            flagBinario = 0;
+                            printf("Empleados cargados en modo binario\n\n");
 
-            }
-            break;
-        case 3:
-            if(!flagBinario || !flagTexto)
-            {
-                printf("%d",proximoId);
+                        }
+                        else
+                        {
+                            printf("\nProblemas con la carga de los empleados\n");
+                        }
+                    }
+
+                }
+                break;
+            case 3:
                 if(!controller_addEmployee(listaEmpleados,&proximoId))
                 {
                     printf("Alta exitosa!\n");
@@ -114,16 +105,9 @@ int main()
                 {
                     printf("Error al cargar el empleado\n");
                 }
-            }
-            else
-            {
-                printf("No se ha abierto ningun archivo para trabajar!\n");
-            }
+                break;
+            case 4:
 
-            break;
-        case 4:
-            if(!flagBinario || !flagTexto)
-            {
                 if(!ll_isEmpty(listaEmpleados))
                 {
                     if(controller_editEmployee(listaEmpleados))
@@ -132,24 +116,16 @@ int main()
                     }
                     else
                     {
-                       printf("Error al modificar los empleados\n");
+                        printf("Error al modificar los empleados\n");
                     }
                 }
                 else
                 {
                     printf("La lista no contiene empleados para modificar\n");
                 }
-            }
-            else
-            {
-                printf("No hay empleados para modificar\n");
-            }
 
-            break;
-        case 5:
-
-            if(!flagBinario || !flagTexto)
-            {
+                break;
+            case 5:
                 if(!ll_isEmpty(listaEmpleados))
                 {
 
@@ -163,16 +139,12 @@ int main()
                     }
 
                 }
-            }
-            else
-            {
-                printf("No se ha abierto el archivo para dar de baja empleados\n");
-            }
-
-            break;
-        case 6:
-            if(!flagBinario || !flagTexto)
-            {
+                else
+                {
+                    printf("No hay empleados en la lista\n");
+                }
+                break;
+            case 6:
                 if(!ll_isEmpty(listaEmpleados))
                 {
                     controller_ListEmployee(listaEmpleados);
@@ -182,40 +154,26 @@ int main()
                     printf("La lista se encuentra vacia\n");
                 }
 
-            }
-            else
-            {
-                printf("No se ha abierto el archivo de empleados en ningun modo!\n");
-            }
-
-            break;
-        case 7:
-
-            if(flagBinario == 0 || flagTexto == 0)
-            {
+                break;
+            case 7:
                 if(!ll_isEmpty(listaEmpleados))
                 {
                     if(!controller_sortEmployee(listaEmpleados))
                     {
                         printf("Ordenamiento exitoso!\n");
-                    }else
+                    }
+                    else
                     {
                         printf("Error al ordenar los empleados\n");
                     }
-                }else
+                }
+                else
                 {
                     printf("No hay empleados en la lista para ordenar\n");
                 }
-            }
-            else
-            {
-                printf("No se ha abierto el archivo para ordenar\n");
-            }
 
-            break;
-        case 8:
-            if(!flagTexto)
-            {
+                break;
+            case 8:
                 if(!controller_saveAsText("data.csv",listaEmpleados))
                 {
                     flagTexto = 1;
@@ -225,22 +183,10 @@ int main()
                 {
                     printf("Ocurrio un problema al guardar el archivo en modo texto\n");
                 }
-            }
-            else
-            {
-                if(!flagBinario)
-                {
-                    printf("Usted abrio el archivo binario, no puede guardarla como texto!");
-                }
-                else
-                {
-                    printf("No se ha abierto el archivo  en texto para guardar\n");
-                }
-            }
-            break;
-        case 9:
-            if(!flagBinario)
-            {
+
+                break;
+            case 9:
+
                 if(!controller_saveAsBinary("data.bin",listaEmpleados))
                 {
                     flagBinario = 1;
@@ -250,30 +196,19 @@ int main()
                 {
                     printf("Ocurrio un problema al guardar el archivo en modo binario\n");
                 }
+
+                break;
             }
-            else
-            {
-                if(!flagTexto)
-                {
-                    printf("Usted abrio el archivo en texto, no puede guardarla como binario!\n");
-                }
-                else
-                {
-                    printf("No se ha abierto el archivo  en binario para guardar\n");
-                }
-            }
-            break;
+
+            system("pause");
+
         }
+        while(option != 10);
 
-        system("pause");
+        ll_deleteLinkedList(listaEmpleados);
+        free(listaEmpleados);
 
+        return 0;
     }
-    while(option != 10);
-
-    ll_deleteLinkedList(listaEmpleados);
-    free(listaEmpleados);
-
-    return 0;
-}
 
 

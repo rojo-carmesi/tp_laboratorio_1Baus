@@ -124,26 +124,6 @@ int employee_getSueldo(Employee* this,int* sueldo);
 
 int mostrarEmpleado(Employee* empleado);
 
-/** \brief Genera el proximo id del empleado a partir de la busqueda del ultimo id generado
- * y se lo asgina al nuevo empleado creado
- * \param pArrayListaDeEmpleados puntero a la lista de empleados
- * \param
- * \return 0 si lo devolvió sin problemas, -1 si hubo un error.
- *
- */
-
-int generarIdEmpleado(LinkedList* pArrayListaDeEmpleados);
-
-/** \brief Realiza el incremento de la constante ID que esta inicializada en 0 y la retorna
- * \return ID autoincremental
- */
-int employee_generarId();
-
-/** \brief Realiza el seteo de la ultima ID que tomaremos como referencia
- * \return void no retorna nada
- */
-void employee_setPrimerId(int valorInt);
-
 /** \brief Realiza la busqueda del empleado por el Id pasado por ferencia
  * \param pArrayListaDeEmpleados puntero a la lista de empleados
  * \param IdBuscado
@@ -178,5 +158,4 @@ int employee_ordenarHorasTrabajadas(void*emp1,void* emp2);
  */
 int employee_ordenarPorSueldo(void*emp1,void* emp2);
 
-int employee_buscarMayorId(LinkedList* pArrayListEmployee, int* id);
 #endif // employee_H_INCLUDED
